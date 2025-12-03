@@ -1,45 +1,30 @@
-import React, { useState } from "react";
-import { View, Text, TextInput, Image, Switch, TouchableOpacity } from "react-native";
+function ProfileSetup({ navigation }) {
+return (
+<ScrollView style={{ padding: 20 }}>
+<Text style={{ fontSize: 26, fontWeight: "bold" }}>Set up your profile details</Text>
 
-export default function ProfileSetupScreen({ navigation }) {
-  const [registered, setRegistered] = useState(false);
 
-  return (
-    <View style={{ flex: 1, padding: 20 }}>
-      <Text style={{ fontSize: 28, fontWeight: "700", marginBottom: 20 }}>
-        Set up your profile details
-      </Text>
+<Image
+source={{ uri: "https://picsum.photos/500/300" }}
+style={{ width: "100%", height: 180, borderRadius: 10, marginVertical: 20 }}
+/>
 
-      <Image
-        source={{ uri: "https://placehold.co/300x150" }}
-        style={{ width: "100%", height: 180, borderRadius: 12, marginBottom: 20 }}
-      />
 
-      <Text>Are you registered business</Text>
-      <Switch value={registered} onValueChange={setRegistered} />
+<Text style={{ marginTop: 10 }}>Your Name</Text>
+<TextInput placeholder="Enter name" style={input} />
 
-      <TextInput
-        placeholder="Your name"
-        style={{
-          borderWidth: 1,
-          borderColor: "#ccc",
-          borderRadius: 10,
-          padding: 12,
-          marginTop: 10,
-        }}
-      />
 
-      <TouchableOpacity
-        style={{
-          backgroundColor: "black",
-          padding: 15,
-          borderRadius: 10,
-          marginTop: 30,
-        }}
-        onPress={() => navigation.navigate("BusinessDetails")}
-      >
-        <Text style={{ color: "white", textAlign: "center" }}>Next</Text>
-      </TouchableOpacity>
-    </View>
-  );
+<Text style={{ marginTop: 10 }}>PAN Number (Optional)</Text>
+<TextInput placeholder="Enter PAN number" style={input} />
+
+
+<Text style={{ marginTop: 10 }}>About yourself</Text>
+<TextInput placeholder="About" style={[input, { height: 100 }]} multiline />
+
+
+<TouchableOpacity style={btn} onPress={() => navigation.navigate("BusinessDetails")}>
+<Text style={btnText}>Next</Text>
+</TouchableOpacity>
+</ScrollView>
+);
 }
